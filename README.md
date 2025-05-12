@@ -1,7 +1,4 @@
----
-title: Experiment Viash Caching
-format: gfm
----
+# Experiment with Nextflow caching
 
 ## `nextflow run`
 
