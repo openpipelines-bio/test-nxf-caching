@@ -3,6 +3,10 @@ println("projectDir: ${projectDir}")
 println("moduleDir: ${moduleDir}")
 println("workDir: ${workDir}")
 
+meta = [
+  "resources_dir": moduleDir.toRealPath().normalize()
+]
+
 process testcaching {
   container 'ubuntu:latest'
 
@@ -27,7 +31,7 @@ workflow {
         file.baseName,
         [output: "output.txt"],
         file,
-        moduleDir.toRealPath().normalize()
+        meta.resources_dir
       ]
     }
     | testcaching
