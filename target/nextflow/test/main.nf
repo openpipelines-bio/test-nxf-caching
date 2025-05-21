@@ -4,18 +4,20 @@ println("moduleDir: ${moduleDir}")
 println("workDir: ${workDir}")
 
 process testcaching {
-    input:
-      tuple val(id), val(args), path(viash_par_input), path(resourcesDir, stageAs: ".viash_meta_resources")
+  container 'ubuntu:latest'
 
-    output:
-      tuple val("$id"), path{args.output}, optional: true
+  input:
+    tuple val(id), val(args), path(viash_par_input), path(resourcesDir, stageAs: ".viash_meta_resources")
 
-    script:
-    """
-    export VIASH_META_RESOURCES_DIR="${resourcesDir}"
+  output:
+    tuple val("$id"), path{args.output}, optional: true
 
-    cp -r "${viash_par_input}" "${args.output}"
-    """
+  script:
+  """
+  export VIASH_META_RESOURCES_DIR="${resourcesDir}"
+
+  cp -r "${viash_par_input}" "${args.output}"
+  """
 }
 
 workflow {
