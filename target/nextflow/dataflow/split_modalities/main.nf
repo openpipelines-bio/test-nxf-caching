@@ -3040,7 +3040,7 @@ System.err.println("baseDir: ${session.getBaseDir()}")
 
 
 meta = [
-  "resources_dir": moduleDir.toRealPath().normalize(),
+  "resources_dir": file(moduleDir.toRealPath().normalize()),
   "config": processConfig(readJsonBlob('''{
   "name" : "split_modalities",
   "namespace" : "dataflow",
