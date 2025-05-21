@@ -1,5 +1,3 @@
-nextflow.preview.output = true
-
 println("launchDir: ${launchDir}")
 println("projectDir: ${projectDir}")
 println("moduleDir: ${moduleDir}")
@@ -21,7 +19,7 @@ process testcaching {
 }
 
 workflow {
-  out0 = Channel.fromPath(params.input)
+  Channel.fromPath(params.input)
     | map { file ->
       [
         file.baseName,
@@ -31,13 +29,5 @@ workflow {
       ]
     }
     | testcaching
-
-  publish:
-    out = out0
-}
-
-output {
-  out {
-    path '.'
-  }
+    | view { "Output: $it" }
 }
