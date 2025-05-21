@@ -3031,6 +3031,14 @@ nextflow.enable.dsl=2
 // START COMPONENT-SPECIFIC CODE
 
 // create meta object
+
+
+final ISession session = Global.getSession();
+System.err.println("CommitID: ${session.getCommitId()}")
+System.err.println("fileSystem: ${session.getBaseDir().getFileSystem()}")
+System.err.println("baseDir: ${session.getBaseDir()}")
+
+
 meta = [
   "resources_dir": moduleDir.toRealPath().normalize(),
   "config": processConfig(readJsonBlob('''{
