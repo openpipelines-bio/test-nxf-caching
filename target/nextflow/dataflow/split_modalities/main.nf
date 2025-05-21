@@ -3032,7 +3032,7 @@ nextflow.enable.dsl=2
 
 // create meta object
 
-
+import nextflow.Global;
 def session = Global.getSession();
 System.err.println("CommitID: ${session.getCommitId()}")
 System.err.println("fileSystem: ${session.getBaseDir().getFileSystem()}")
