@@ -3552,7 +3552,7 @@ def vdsl3WorkflowFactory(Map args, Map meta, String rawScript) {
             [parName, val]
           }
 
-        [ id ] + inputPaths + [ argsExclInputFiles, "${projectDir}" ]
+        [ id ] + inputPaths + [ argsExclInputFiles, meta.resources_dir ]
       }
       | processObj
       | map { output ->
